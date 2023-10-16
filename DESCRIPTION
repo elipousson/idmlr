@@ -1,0 +1,22 @@
+Type: Package
+Package: idmlr
+Title: Read InDesign Markup Language (IDML) Files
+Version: 0.1.0
+Authors@R: 
+    person("Eli", "Pousson", , "eli.pousson@gmail.com", role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0000-0001-8280-1706"))
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: Read InDesign Markup Language (IDML) Files into R. Additional
+    functions to modify and write IDML files may be added in the future.
+License: MIT + file LICENSE
+Imports: 
+    cli,
+    fs,
+    purrr,
+    rlang,
+    utils,
+    vctrs,
+    xml2
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3
