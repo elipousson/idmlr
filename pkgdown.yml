@@ -1,0 +1,9 @@
+pandoc: 2.19.2
+pkgdown: 2.0.7
+pkgdown_sha: ~
+articles: {}
+last_built: 2023-10-16T03:03Z
+urls:
+  reference: https://elipousson.github.io/idmlr/reference
+  article: https://elipousson.github.io/idmlr/articles
+
