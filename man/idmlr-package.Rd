@@ -8,6 +8,13 @@
 \description{
 Read InDesign Markup Language (IDML) Files into R. Additional functions to modify and write IDML files may be added in the future.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://elipousson.github.io/idmlr/}
+}
+
+}
 \author{
 \strong{Maintainer}: Eli Pousson \email{eli.pousson@gmail.com} (\href{https://orcid.org/0000-0001-8280-1706}{ORCID}) [copyright holder]
 
