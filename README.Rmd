@@ -1,0 +1,44 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# idmlr
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<!-- badges: end -->
+
+The goal of idmlr is to read and (eventually) modify and write InDesign Markup Language (IDML) files.
+
+## Installation
+
+You can install the development version of idmlr from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pkg_install("elipousson/idmlr")
+```
+
+## Example
+
+This is a basic example which shows you how to read an IDML file:
+
+```{r example}
+library(idmlr)
+
+
+read_idml(system.file("idml/letter_portrait_standard.idml", package = "idmlr"))
+```
+
+
