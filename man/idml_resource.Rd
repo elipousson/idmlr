@@ -6,6 +6,7 @@
 \alias{get_idml_fonts}
 \alias{get_idml_styles}
 \alias{get_idml_graphic}
+\alias{get_idml_preferences}
 \title{Get fonts, styles, and graphics from an IDML object}
 \usage{
 get_idml_resource(
@@ -21,6 +22,8 @@ get_idml_fonts(idml, format = "xml_document", ...)
 get_idml_styles(idml, format = "xml_document", ...)
 
 get_idml_graphic(idml, format = "xml_document", ...)
+
+get_idml_preferences(idml, format = "xml_document", ...)
 }
 \arguments{
 \item{idml}{A `idml` class object created with [read_idml()].}
@@ -52,7 +55,7 @@ mentioned in error messages as the source of the error. See the
 Get fonts, styles, and graphics from an IDML object
 
 [get_idml_resource()] extracts a resource from an `idml` object in the
-supplied format. [get_idml_fonts()], [get_idml_styles()], and
-[get_idml_graphic()] are helpers for extracting the Fonts.xml, Styles.xml, or
-Graphic.xml files.
+supplied format. [get_idml_fonts()], [get_idml_styles()],
+[get_idml_graphic()], and [get_idml_preferences()] are helpers for extracting
+the Fonts.xml, Styles.xml, Graphic.xml, and Preferences.xml files.
 }

@@ -4,9 +4,9 @@
 NULL
 
 #' [get_idml_resource()] extracts a resource from an `idml` object in the
-#' supplied format. [get_idml_fonts()], [get_idml_styles()], and
-#' [get_idml_graphic()] are helpers for extracting the Fonts.xml, Styles.xml, or
-#' Graphic.xml files.
+#' supplied format. [get_idml_fonts()], [get_idml_styles()],
+#' [get_idml_graphic()], and [get_idml_preferences()] are helpers for extracting
+#' the Fonts.xml, Styles.xml, Graphic.xml, and Preferences.xml files.
 #'
 #' @name get_idml_resource
 #' @inheritParams check_idml
@@ -51,4 +51,11 @@ get_idml_styles <- function(idml, format = "xml_document", ...) {
 #' @export
 get_idml_graphic <- function(idml, format = "xml_document", ...) {
   get_idml_resource(idml, "Graphic.xml", format = format, ...)
+}
+
+#' @name get_idml_preferences
+#' @rdname idml_resource
+#' @export
+get_idml_preferences <- function(idml, format = "xml_document", ...) {
+  get_idml_resource(idml, "Preferences.xml", format = format, ...)
 }
