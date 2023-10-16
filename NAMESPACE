@@ -3,6 +3,7 @@
 export(get_idml_contents)
 export(get_idml_fonts)
 export(get_idml_graphic)
+export(get_idml_meta)
 export(get_idml_preferences)
 export(get_idml_resource)
 export(get_idml_styles)
