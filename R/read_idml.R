@@ -1,3 +1,12 @@
+#' @noRd
+has_xml_ext <- function(string, ignore.case = TRUE) {
+  if (!is_string(string)) {
+    return(FALSE)
+  }
+
+  grepl("\\.xml$(?!\\.)", string, ignore.case = ignore.case, perl = TRUE)
+}
+
 #' Read an InDesign Markup Language (IDML) file to a `idml` object
 #'
 #' [read_idml()] takes a file path for an `idml` file and returns an `idml`
@@ -88,7 +97,11 @@ read_idml_xml_document <- function(path, ..., glob = "*.xml", recurse = FALSE) {
       return(suppressWarnings(readLines(path)))
     }
 
-    return(xml2::read_xml(path, ...))
+    if (has_xml_ext(path)) {
+      return(xml2::read_xml(path, ...))
+    }
+
+    return(NULL)
   }
 
   file_list <- purrr::map(
