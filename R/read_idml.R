@@ -21,6 +21,23 @@
 read_idml <- function(file,
                       ...,
                       exdir = tempdir()) {
+  if (is_url(file)) {
+    url <- file
+    file <- file.path(tempdir(), basename(url))
+
+    download.file(
+      url = url,
+      destfile = file,
+      quiet = TRUE
+    )
+  }
+
+  if (!file.exists(file)) {
+    cli::cli_abort(
+      "{.arg file} must be an existing file or valid URL."
+    )
+  }
+
   try_fetch(
     utils::unzip(
       zipfile = file,
