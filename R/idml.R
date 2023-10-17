@@ -46,7 +46,7 @@ validate_idml <- function(idml,
   )
 
   if (all(rules)) {
-    invisible(idml)
+    return(invisible(idml))
   }
 
   msgs <- c(
