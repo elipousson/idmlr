@@ -13,6 +13,7 @@ Imports:
     cli,
     fs,
     purrr,
+    readr,
     rlang,
     utils,
     vctrs,

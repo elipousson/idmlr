@@ -17,13 +17,13 @@ get_idml_resource(
   error_call = caller_env()
 )
 
-get_idml_fonts(idml, format = "xml_document", ...)
+get_idml_fonts(idml, format = "xml_document", parent_nm = NULL, ...)
 
-get_idml_styles(idml, format = "xml_document", ...)
+get_idml_styles(idml, format = "xml_document", parent_nm = NULL, ...)
 
-get_idml_graphic(idml, format = "xml_document", ...)
+get_idml_graphic(idml, format = "xml_document", parent_nm = NULL, ...)
 
-get_idml_preferences(idml, format = "xml_document", ...)
+get_idml_preferences(idml, format = "xml_document", parent_nm = NULL, ...)
 }
 \arguments{
 \item{idml}{A `idml` class object created with [read_idml()].}
@@ -44,18 +44,25 @@ in namespace \code{foo}, it will be called \code{foo:bar}. (And
 similarly for attributes). Default namespaces must be given an explicit
 name. The ns is ignored when using \code{\link[xml2:xml_name<-]{xml_name<-()}} and
 \code{\link[xml2:xml_set_name]{xml_set_name()}}.}
+    \item{\code{unique_nm}}{If `TRUE`, ensure that parent_node names are unique before
+using them to extract data from the `xml_document`. Ignored if `node_names`
+is supplied.}
+    \item{\code{type}}{Type of data to extract from chlildren nodes: "attr" (attributes)
+or "text".}
   }}
 
 \item{error_call}{The execution environment of a currently
 running function, e.g. \code{caller_env()}. The function will be
 mentioned in error messages as the source of the error. See the
 \code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
+
+\item{parent_nm}{Name of top-level parent node. If parent_nm is a
+character vector, [extract_doc_df()] returns a data frame list.}
 }
 \description{
-Get fonts, styles, and graphics from an IDML object
-
-[get_idml_resource()] extracts a resource from an `idml` object in the
-supplied format. [get_idml_fonts()], [get_idml_styles()],
-[get_idml_graphic()], and [get_idml_preferences()] are helpers for extracting
-the Fonts.xml, Styles.xml, Graphic.xml, and Preferences.xml files.
+By default, if `format = "data.frame"`, [get_idml_fonts()] returns a single
+data.frame and [get_idml_styles()], [get_idml_graphic()], and
+[get_idml_preferences()] returns a list of data.frame objects values present
+in the input `idml` object. This format option is still under development and
+does not return all available data from the `xml_document`.
 }

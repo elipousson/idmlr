@@ -11,6 +11,10 @@ get_idml_contents(
   file = NULL,
   format = "xml_document",
   ns = character(),
+  parent_nm = NULL,
+  unique_nm = TRUE,
+  type = "attr",
+  ...,
   error_call = caller_env()
 )
 }
@@ -30,10 +34,26 @@ similarly for attributes). Default namespaces must be given an explicit
 name. The ns is ignored when using \code{\link[xml2:xml_name<-]{xml_name<-()}} and
 \code{\link[xml2:xml_set_name]{xml_set_name()}}.}
 
+\item{parent_nm}{Name of top-level parent node. If parent_nm is a
+character vector, [extract_doc_df()] returns a data frame list.}
+
+\item{unique_nm}{If `TRUE`, ensure that parent_node names are unique before
+using them to extract data from the `xml_document`. Ignored if `node_names`
+is supplied.}
+
+\item{type}{Type of data to extract from chlildren nodes: "attr" (attributes)
+or "text".}
+
+\item{...}{Needed for compatibility with generic. Unused.}
+
 \item{error_call}{The execution environment of a currently
 running function, e.g. \code{caller_env()}. The function will be
 mentioned in error messages as the source of the error. See the
 \code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
+}
+\value{
+A list, XML document, data frame, or data frame list depending on
+  format and the input idml object.
 }
 \description{
 [get_idml_contents()] is a helper for extracting or converting `xml_document`

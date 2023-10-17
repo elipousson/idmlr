@@ -13,13 +13,20 @@ NULL
 #' @param format "list" or "xml_document". If "list", contents are converted
 #'   with [xml2::as_list()] using the supplied `ns` parameter.
 #' @inheritParams xml2::as_list
+#' @inheritParams xml_doc_to_df
 #' @inheritParams rlang::args_error_context
+#' @returns A list, XML document, data frame, or data frame list depending on
+#'   format and the input idml object.
 #' @export
 get_idml_contents <- function(idml,
                               dir = NULL,
                               file = NULL,
                               format = "xml_document",
                               ns = character(),
+                              parent_nm = NULL,
+                              unique_nm = TRUE,
+                              type = "attr",
+                              ...,
                               error_call = caller_env()) {
   validate_idml(idml)
 
@@ -40,12 +47,25 @@ get_idml_contents <- function(idml,
     return(contents[[dir]])
   }
 
-  format <- arg_match(format, c("list", "xml_document"), error_call = error_call)
+  format <- tolower(format)
+
+  format <- arg_match(
+    format,
+    c("list", "xml_document", "data.frame"),
+    error_call = error_call
+  )
 
   switch(format,
     "xml_document" = content,
     # FIXME: If I add as_list to the imports, it creates a conflict with
     # rlang::as_list
-    "list" = xml2::as_list(content, ns = ns)
+    "list" = xml2::as_list(content, ns = ns),
+    "data.frame" = xml_doc_to_df(
+      doc = content,
+      parent_nm = parent_nm,
+      unique_nm = unique_nm,
+      type = type,
+      ...
+    )
   )
 }

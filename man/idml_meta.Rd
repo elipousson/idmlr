@@ -23,6 +23,13 @@ in namespace \code{foo}, it will be called \code{foo:bar}. (And
 similarly for attributes). Default namespaces must be given an explicit
 name. The ns is ignored when using \code{\link[xml2:xml_name<-]{xml_name<-()}} and
 \code{\link[xml2:xml_set_name]{xml_set_name()}}.}
+    \item{\code{parent_nm}}{Name of top-level parent node. If parent_nm is a
+character vector, [extract_doc_df()] returns a data frame list.}
+    \item{\code{unique_nm}}{If `TRUE`, ensure that parent_node names are unique before
+using them to extract data from the `xml_document`. Ignored if `node_names`
+is supplied.}
+    \item{\code{type}}{Type of data to extract from chlildren nodes: "attr" (attributes)
+or "text".}
   }}
 
 \item{error_call}{The execution environment of a currently
