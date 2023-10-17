@@ -10,8 +10,8 @@ get_idml_meta(idml, format = "xml_document", ..., error_call = caller_env())
 \arguments{
 \item{idml}{A `idml` class object created with [read_idml()].}
 
-\item{format}{"list" or "xml_document". If "list", contents are converted
-with [xml2::as_list()] using the supplied `ns` parameter.}
+\item{format}{"list", "xml_document", or "data.frame". If "list", contents
+are converted with [xml2::as_list()] using the supplied `ns` parameter.}
 
 \item{...}{
   Arguments passed on to \code{\link[=get_idml_contents]{get_idml_contents}}

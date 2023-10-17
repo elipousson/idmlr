@@ -9,9 +9,8 @@ NULL
 
 #' @name get_idml_contents
 #' @rdname idml_contents
-#' @param dir,file Directory and file name from IDML contents to return.
-#' @param format "list" or "xml_document". If "list", contents are converted
-#'   with [xml2::as_list()] using the supplied `ns` parameter.
+#' @param dir,file Directory and file name from IDML contents to return. If
+#'   `file` is `NULL`,
 #' @inheritParams xml2::as_list
 #' @inheritParams xml_doc_to_df
 #' @inheritParams rlang::args_error_context
@@ -28,7 +27,7 @@ get_idml_contents <- function(idml,
                               type = "attr",
                               ...,
                               error_call = caller_env()) {
-  validate_idml(idml)
+  validate_idml(idml, error_call = error_call)
 
   if (is.null(dir) && is.null(file)) {
     cli::cli_abort(
@@ -43,10 +42,35 @@ get_idml_contents <- function(idml,
     content <- contents[[dir]][[file]]
   } else if (!is.null(file)) {
     content <- contents[[file]]
-  } else if (!is.null(dir)) {
+  } else {
     return(contents[[dir]])
   }
 
+  format_idml_content(
+    content = content,
+    format = format,
+    ns = ns,
+    parent_nm = parent_nm,
+    unique_nm = unique_nm,
+    type = type,
+    ...,
+    error_call = error_call
+  )
+}
+
+#' @rdname idml_contents
+#' @name format_idml_content
+#' @param format "list", "xml_document", or "data.frame". If "list", contents
+#'   are converted with [xml2::as_list()] using the supplied `ns` parameter.
+#' @export
+format_idml_content <- function(content,
+                                format = "xml_document",
+                                ns = character(),
+                                parent_nm = NULL,
+                                unique_nm = TRUE,
+                                type = "attr",
+                                ...,
+                                error_call = caller_env()) {
   format <- tolower(format)
 
   format <- arg_match(

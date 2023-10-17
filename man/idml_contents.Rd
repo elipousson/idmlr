@@ -3,6 +3,7 @@
 \name{idml_contents}
 \alias{idml_contents}
 \alias{get_idml_contents}
+\alias{format_idml_content}
 \title{Get contents from an IDML object}
 \usage{
 get_idml_contents(
@@ -17,14 +18,26 @@ get_idml_contents(
   ...,
   error_call = caller_env()
 )
+
+format_idml_content(
+  content,
+  format = "xml_document",
+  ns = character(),
+  parent_nm = NULL,
+  unique_nm = TRUE,
+  type = "attr",
+  ...,
+  error_call = caller_env()
+)
 }
 \arguments{
 \item{idml}{A `idml` class object created with [read_idml()].}
 
-\item{dir, file}{Directory and file name from IDML contents to return.}
+\item{dir, file}{Directory and file name from IDML contents to return. If
+`file` is `NULL`,}
 
-\item{format}{"list" or "xml_document". If "list", contents are converted
-with [xml2::as_list()] using the supplied `ns` parameter.}
+\item{format}{"list", "xml_document", or "data.frame". If "list", contents
+are converted with [xml2::as_list()] using the supplied `ns` parameter.}
 
 \item{ns}{Optionally, a named vector giving prefix-url pairs, as produced
 by \code{\link[xml2:xml_ns]{xml_ns()}}. If provided, all names will be explicitly

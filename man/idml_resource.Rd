@@ -31,8 +31,8 @@ get_idml_preferences(idml, format = "xml_document", parent_nm = NULL, ...)
 \item{resource}{One or more resource names: "Graphic.xml", "Fonts.xml",
 or "Styles.xml"}
 
-\item{format}{"list" or "xml_document". If "list", contents are converted
-with [xml2::as_list()] using the supplied `ns` parameter.}
+\item{format}{"list", "xml_document", or "data.frame". If "list", contents
+are converted with [xml2::as_list()] using the supplied `ns` parameter.}
 
 \item{...}{
   Arguments passed on to \code{\link[=get_idml_contents]{get_idml_contents}}
