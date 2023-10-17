@@ -34,13 +34,35 @@ new_idml <- function(file,
 #' @param type MIMETYPE value to use in validating `idml` objects.
 #' @export
 validate_idml <- function(idml,
-                          type = "application/vnd.adobe.indesign-idml-package") {
-  stopifnot(
-    inherits(idml, "idml"),
-    all(has_name(idml, c("file", "path", "contents"))),
+                          what = "idml",
+                          nm = c("file", "path", "contents"),
+                          type = "application/vnd.adobe.indesign-idml-package",
+                          error_call = caller_env()) {
+  rules <- c(
+    inherits(idml, what),
+    all(has_name(idml, nm)),
     has_name(idml[["contents"]], "mimetype"),
     idml[["contents"]][["mimetype"]] == type
   )
 
-  invisible(idml)
+  if (all(rules)) {
+    invisible(idml)
+  }
+
+  msgs <- c(
+    "must be a {.cls {what}} object",
+    "must have the names {.val {nm}}",
+    "contents must have a {.val mimetype} value",
+    "and mimetype must be {.val {type}}"
+  )
+
+  msg <- paste0(
+    "{.arg idml} ", paste0(msgs[!rules], collapse = ", "),
+    "."
+  )
+
+  cli_abort(
+    msg,
+    call = error_call
+  )
 }

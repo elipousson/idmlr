@@ -8,7 +8,13 @@
 \usage{
 new_idml(file, path, contents)
 
-validate_idml(idml, type = "application/vnd.adobe.indesign-idml-package")
+validate_idml(
+  idml,
+  what = "idml",
+  nm = c("file", "path", "contents"),
+  type = "application/vnd.adobe.indesign-idml-package",
+  error_call = caller_env()
+)
 }
 \arguments{
 \item{file}{File name for input IDML file.}
