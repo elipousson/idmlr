@@ -58,8 +58,8 @@ supplied format.</p>
 
 
 <dt>format</dt>
-<dd><p>"list" or "xml_document". If "list", contents are converted
-with [xml2::as_list()] using the supplied `ns` parameter.</p></dd>
+<dd><p>"list", "xml_document", or "data.frame". If "list", contents
+are converted with [xml2::as_list()] using the supplied `ns` parameter.</p></dd>
 
 
 <dt>...</dt>
@@ -71,6 +71,19 @@ in namespace <code>foo</code>, it will be called <code>foo:bar</code>. (And
 similarly for attributes). Default namespaces must be given an explicit
 name. The ns is ignored when using <code><a href="http://xml2.r-lib.org/reference/xml_name.html" class="external-link">xml_name&lt;-()</a></code> and
 <code><a href="http://xml2.r-lib.org/reference/xml_name.html" class="external-link">xml_set_name()</a></code>.</p></dd>
+
+    <dt><code>parent_nm</code></dt>
+<dd><p>Name of top-level parent node. If parent_nm is a
+character vector, [extract_doc_df()] returns a data frame list.</p></dd>
+
+    <dt><code>unique_nm</code></dt>
+<dd><p>If `TRUE`, ensure that parent_node names are unique before
+using them to extract data from the `xml_document`. Ignored if `node_names`
+is supplied.</p></dd>
+
+    <dt><code>type</code></dt>
+<dd><p>Type of data to extract from chlildren nodes: "attr" (attributes)
+or "text".</p></dd>
 
   
 </dl></dd>

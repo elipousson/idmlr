@@ -31,6 +31,9 @@
     <loc>https://elipousson.github.io/idmlr/reference/idml_resource.html</loc>
   </url>
   <url>
+    <loc>https://elipousson.github.io/idmlr/reference/idml_spreads.html</loc>
+  </url>
+  <url>
     <loc>https://elipousson.github.io/idmlr/reference/idmlr-package.html</loc>
   </url>
   <url>
@@ -38,5 +41,8 @@
   </url>
   <url>
     <loc>https://elipousson.github.io/idmlr/reference/read_idml.html</loc>
+  </url>
+  <url>
+    <loc>https://elipousson.github.io/idmlr/reference/xml_doc_to_df.html</loc>
   </url>
 </urlset>
