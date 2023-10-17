@@ -52,7 +52,7 @@ xml_doc_to_df <- function(doc = NULL,
       xml2::xml_find_first(doc, sprintf(".//%s", parent_nm)),
       error = function(cnd) {
         # warn on error and return NULL
-        cli_warn(cnd$message)
+        cli::cli_warn(cnd$message)
         return(NULL)
       }
     )
