@@ -29,11 +29,6 @@ xml_doc_to_df <- function(doc = NULL,
                           nested = TRUE,
                           type = "attr",
                           ...) {
-  # if (is.character(parent_node)) {
-  #   parent_nm <- parent_node
-  #   parent_node <- NULL
-  # }
-
   if (length(parent_nm) > 1) {
     doc_df_list <- lapply(
       parent_nm,
@@ -52,7 +47,7 @@ xml_doc_to_df <- function(doc = NULL,
       xml2::xml_find_first(doc, sprintf(".//%s", parent_nm)),
       error = function(cnd) {
         # warn on error and return NULL
-        cli::cli_warn(cnd$message)
+        cli_warn(cnd$message)
         return(NULL)
       }
     )
@@ -96,6 +91,7 @@ xml_doc_to_df <- function(doc = NULL,
 }
 
 #' @noRd
+#' @importFrom xml2 xml_find_all xml_text
 extract_node_text <- function(doc, target_node) {
   xml2::xml_find_all(doc, target_node) |>
     xml2::xml_text() |>
@@ -103,6 +99,7 @@ extract_node_text <- function(doc, target_node) {
 }
 
 #' @noRd
+#' @importFrom xml2 xml_find_all xml_attrs
 extract_node_attr <- function(doc, target_node) {
   xml2::xml_find_all(doc, target_node) |>
     xml2::xml_attrs()

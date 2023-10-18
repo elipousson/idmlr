@@ -30,7 +30,7 @@ get_idml_contents <- function(idml,
   validate_idml(idml, error_call = error_call)
 
   if (is.null(dir) && is.null(file)) {
-    cli::cli_abort(
+    cli_abort(
       "One of {.arg dir} or {.arg file} must be supplied.",
       call = error_call
     )
@@ -63,6 +63,7 @@ get_idml_contents <- function(idml,
 #' @param format "list", "xml_document", or "data.frame". If "list", contents
 #'   are converted with [xml2::as_list()] using the supplied `ns` parameter.
 #' @export
+#' @importFrom purrr list_rbind
 format_idml_content <- function(content,
                                 format = "xml_document",
                                 ns = character(),
