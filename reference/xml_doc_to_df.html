@@ -62,7 +62,7 @@
 
 <dt>parent_nm</dt>
 <dd><p>Name of top-level parent node. If parent_nm is a
-character vector, [extract_doc_df()] returns a data frame list.</p></dd>
+character vector, <code>extract_doc_df()</code> returns a data frame list.</p></dd>
 
 
 <dt>parent_node</dt>
@@ -70,19 +70,19 @@ character vector, [extract_doc_df()] returns a data frame list.</p></dd>
 
 
 <dt>node_names</dt>
-<dd><p>Node names to iterate over. Default `NULL`. Typically
+<dd><p>Node names to iterate over. Default <code>NULL</code>. Typically
 created from children of parent node.</p></dd>
 
 
 <dt>unique_nm</dt>
-<dd><p>If `TRUE`, ensure that parent_node names are unique before
-using them to extract data from the `xml_document`. Ignored if `node_names`
+<dd><p>If <code>TRUE</code>, ensure that parent_node names are unique before
+using them to extract data from the <code>xml_document</code>. Ignored if <code>node_names</code>
 is supplied.</p></dd>
 
 
 <dt>nested</dt>
-<dd><p>If `TRUE`, use `parent_nm` to extract a parent node from doc.
-If `FALSE`, `parent_node` defaults to doc (unless `parent_node` is supplied).</p></dd>
+<dd><p>If <code>TRUE</code>, use <code>parent_nm</code> to extract a parent node from doc.
+If <code>FALSE</code>, <code>parent_node</code> defaults to doc (unless <code>parent_node</code> is supplied).</p></dd>
 
 
 <dt>type</dt>
