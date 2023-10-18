@@ -33,13 +33,13 @@ format_idml_content(
 )
 }
 \arguments{
-\item{idml}{A `idml` class object created with [read_idml()].}
+\item{idml}{A \code{idml} class object created with \code{\link[=read_idml]{read_idml()}}.}
 
 \item{dir, file}{Directory and file name from IDML contents to return. If
-`file` is `NULL`,}
+\code{file} is \code{NULL},}
 
 \item{format}{"list", "xml_document", or "data.frame". If "list", contents
-are converted with [xml2::as_list()] using the supplied `ns` parameter.}
+are converted with \code{\link[xml2:as_list]{xml2::as_list()}} using the supplied \code{ns} parameter.}
 
 \item{ns}{Optionally, a named vector giving prefix-url pairs, as produced
 by \code{\link[xml2:xml_ns]{xml_ns()}}. If provided, all names will be explicitly
@@ -50,10 +50,10 @@ name. The ns is ignored when using \code{\link[xml2:xml_name<-]{xml_name<-()}} a
 \code{\link[xml2:xml_set_name]{xml_set_name()}}.}
 
 \item{parent_nm}{Name of top-level parent node. If parent_nm is a
-character vector, [extract_doc_df()] returns a data frame list.}
+character vector, \code{\link[=extract_doc_df]{extract_doc_df()}} returns a data frame list.}
 
-\item{unique_nm}{If `TRUE`, ensure that parent_node names are unique before
-using them to extract data from the `xml_document`. Ignored if `node_names`
+\item{unique_nm}{If \code{TRUE}, ensure that parent_node names are unique before
+using them to extract data from the \code{xml_document}. Ignored if \code{node_names}
 is supplied.}
 
 \item{type}{Type of data to extract from chlildren nodes: "attr" (attributes)
@@ -68,9 +68,9 @@ mentioned in error messages as the source of the error. See the
 }
 \value{
 A list, XML document, data frame, or data frame list depending on
-  format and the input idml object.
+format and the input idml object.
 }
 \description{
-[get_idml_contents()] is a helper for extracting or converting `xml_document`
-objects from the `idml` list object.
+\code{\link[=get_idml_contents]{get_idml_contents()}} is a helper for extracting or converting \code{xml_document}
+objects from the \code{idml} list object.
 }

@@ -26,13 +26,13 @@ get_idml_graphic(idml, format = "xml_document", parent_nm = NULL, ...)
 get_idml_preferences(idml, format = "xml_document", parent_nm = NULL, ...)
 }
 \arguments{
-\item{idml}{A `idml` class object created with [read_idml()].}
+\item{idml}{A \code{idml} class object created with \code{\link[=read_idml]{read_idml()}}.}
 
 \item{resource}{One or more resource names: "Graphic.xml", "Fonts.xml",
 or "Styles.xml"}
 
 \item{format}{"list", "xml_document", or "data.frame". If "list", contents
-are converted with [xml2::as_list()] using the supplied `ns` parameter.}
+are converted with \code{\link[xml2:as_list]{xml2::as_list()}} using the supplied \code{ns} parameter.}
 
 \item{...}{
   Arguments passed on to \code{\link[=get_idml_contents]{get_idml_contents}}
@@ -44,8 +44,8 @@ in namespace \code{foo}, it will be called \code{foo:bar}. (And
 similarly for attributes). Default namespaces must be given an explicit
 name. The ns is ignored when using \code{\link[xml2:xml_name<-]{xml_name<-()}} and
 \code{\link[xml2:xml_set_name]{xml_set_name()}}.}
-    \item{\code{unique_nm}}{If `TRUE`, ensure that parent_node names are unique before
-using them to extract data from the `xml_document`. Ignored if `node_names`
+    \item{\code{unique_nm}}{If \code{TRUE}, ensure that parent_node names are unique before
+using them to extract data from the \code{xml_document}. Ignored if \code{node_names}
 is supplied.}
     \item{\code{type}}{Type of data to extract from chlildren nodes: "attr" (attributes)
 or "text".}
@@ -57,12 +57,12 @@ mentioned in error messages as the source of the error. See the
 \code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 
 \item{parent_nm}{Name of top-level parent node. If parent_nm is a
-character vector, [extract_doc_df()] returns a data frame list.}
+character vector, \code{\link[=extract_doc_df]{extract_doc_df()}} returns a data frame list.}
 }
 \description{
-By default, if `format = "data.frame"`, [get_idml_fonts()] returns a single
-data.frame and [get_idml_styles()], [get_idml_graphic()], and
-[get_idml_preferences()] returns a list of data.frame objects values present
-in the input `idml` object. This format option is still under development and
-does not return all available data from the `xml_document`.
+By default, if \code{format = "data.frame"}, \code{\link[=get_idml_fonts]{get_idml_fonts()}} returns a single
+data.frame and \code{\link[=get_idml_styles]{get_idml_styles()}}, \code{\link[=get_idml_graphic]{get_idml_graphic()}}, and
+\code{\link[=get_idml_preferences]{get_idml_preferences()}} returns a list of data.frame objects values present
+in the input \code{idml} object. This format option is still under development and
+does not return all available data from the \code{xml_document}.
 }

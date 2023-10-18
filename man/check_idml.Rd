@@ -13,13 +13,13 @@ check_idml_resource(
 )
 }
 \arguments{
-\item{idml}{A `idml` class object created with [read_idml()].}
+\item{idml}{A \code{idml} class object created with \code{\link[=read_idml]{read_idml()}}.}
 
 \item{resource}{One or more resource names: "Graphic.xml", "Fonts.xml",
 or "Styles.xml"}
 }
 \description{
-[check_idml_resource()] helps check if an `idml` object contains the expected
+\code{\link[=check_idml_resource]{check_idml_resource()}} helps check if an \code{idml} object contains the expected
 resource file.
 }
 \keyword{internal}

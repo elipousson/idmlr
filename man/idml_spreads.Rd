@@ -14,10 +14,10 @@ get_idml_spreads(
 )
 }
 \arguments{
-\item{idml}{A `idml` class object created with [read_idml()].}
+\item{idml}{A \code{idml} class object created with \code{\link[=read_idml]{read_idml()}}.}
 
 \item{format}{"list", "xml_document", or "data.frame". If "list", contents
-are converted with [xml2::as_list()] using the supplied `ns` parameter.}
+are converted with \code{\link[xml2:as_list]{xml2::as_list()}} using the supplied \code{ns} parameter.}
 
 \item{names_to}{By default, \code{names(x)} are lost. To keep them, supply a
 string to \code{names_to} and the names will be saved into a column with that
@@ -35,9 +35,9 @@ similarly for attributes). Default namespaces must be given an explicit
 name. The ns is ignored when using \code{\link[xml2:xml_name<-]{xml_name<-()}} and
 \code{\link[xml2:xml_set_name]{xml_set_name()}}.}
     \item{\code{parent_nm}}{Name of top-level parent node. If parent_nm is a
-character vector, [extract_doc_df()] returns a data frame list.}
-    \item{\code{unique_nm}}{If `TRUE`, ensure that parent_node names are unique before
-using them to extract data from the `xml_document`. Ignored if `node_names`
+character vector, \code{\link[=extract_doc_df]{extract_doc_df()}} returns a data frame list.}
+    \item{\code{unique_nm}}{If \code{TRUE}, ensure that parent_node names are unique before
+using them to extract data from the \code{xml_document}. Ignored if \code{node_names}
 is supplied.}
     \item{\code{type}}{Type of data to extract from chlildren nodes: "attr" (attributes)
 or "text".}
@@ -51,6 +51,6 @@ mentioned in error messages as the source of the error. See the
 \description{
 Get spreads from an IDML object
 
-[get_idml_spreads()] extracts a list of xml documents for spreads or a data
-frame from a `idml` object.
+\code{\link[=get_idml_spreads]{get_idml_spreads()}} extracts a list of xml documents for spreads or a data
+frame from a \code{idml} object.
 }

@@ -22,11 +22,11 @@ validate_idml(
 \item{path}{Path to location of unzipped IDML file. This is the directory
 where the XML files are located.}
 
-\item{contents}{A named list of `xml_document` objects.}
+\item{contents}{A named list of \code{xml_document} objects.}
 
-\item{idml}{A object to validate as an `idml` class object.}
+\item{idml}{A object to validate as an \code{idml} class object.}
 
-\item{type}{MIMETYPE value to use in validating `idml` objects.}
+\item{type}{MIMETYPE value to use in validating \code{idml} objects.}
 }
 \description{
 S3 object functions for idml class objects

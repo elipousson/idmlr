@@ -11,8 +11,6 @@ NULL
 #' @rdname idml_contents
 #' @param dir,file Directory and file name from IDML contents to return. If
 #'   `file` is `NULL`,
-#' @inheritParams xml2::as_list
-#' @inheritParams xml_doc_to_df
 #' @inheritParams rlang::args_error_context
 #' @returns A list, XML document, data frame, or data frame list depending on
 #'   format and the input idml object.
@@ -62,6 +60,8 @@ get_idml_contents <- function(idml,
 #' @name format_idml_content
 #' @param format "list", "xml_document", or "data.frame". If "list", contents
 #'   are converted with [xml2::as_list()] using the supplied `ns` parameter.
+#' @inheritParams xml2::as_list
+#' @inheritParams xml_doc_to_df
 #' @export
 #' @importFrom purrr list_rbind
 format_idml_content <- function(content,

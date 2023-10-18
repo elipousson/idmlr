@@ -8,10 +8,10 @@
 get_idml_meta(idml, format = "xml_document", ..., error_call = caller_env())
 }
 \arguments{
-\item{idml}{A `idml` class object created with [read_idml()].}
+\item{idml}{A \code{idml} class object created with \code{\link[=read_idml]{read_idml()}}.}
 
 \item{format}{"list", "xml_document", or "data.frame". If "list", contents
-are converted with [xml2::as_list()] using the supplied `ns` parameter.}
+are converted with \code{\link[xml2:as_list]{xml2::as_list()}} using the supplied \code{ns} parameter.}
 
 \item{...}{
   Arguments passed on to \code{\link[=get_idml_contents]{get_idml_contents}}
@@ -24,9 +24,9 @@ similarly for attributes). Default namespaces must be given an explicit
 name. The ns is ignored when using \code{\link[xml2:xml_name<-]{xml_name<-()}} and
 \code{\link[xml2:xml_set_name]{xml_set_name()}}.}
     \item{\code{parent_nm}}{Name of top-level parent node. If parent_nm is a
-character vector, [extract_doc_df()] returns a data frame list.}
-    \item{\code{unique_nm}}{If `TRUE`, ensure that parent_node names are unique before
-using them to extract data from the `xml_document`. Ignored if `node_names`
+character vector, \code{\link[=extract_doc_df]{extract_doc_df()}} returns a data frame list.}
+    \item{\code{unique_nm}}{If \code{TRUE}, ensure that parent_node names are unique before
+using them to extract data from the \code{xml_document}. Ignored if \code{node_names}
 is supplied.}
     \item{\code{type}}{Type of data to extract from chlildren nodes: "attr" (attributes)
 or "text".}
@@ -40,6 +40,6 @@ mentioned in error messages as the source of the error. See the
 \description{
 Get metadata from an IDML object
 
-[get_idml_meta()] extracts a metadata elements from an `idml` object in the
+\code{\link[=get_idml_meta]{get_idml_meta()}} extracts a metadata elements from an \code{idml} object in the
 supplied format.
 }

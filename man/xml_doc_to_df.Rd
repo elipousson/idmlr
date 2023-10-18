@@ -19,19 +19,19 @@ xml_doc_to_df(
 \item{doc}{A XML document.}
 
 \item{parent_nm}{Name of top-level parent node. If parent_nm is a
-character vector, [extract_doc_df()] returns a data frame list.}
+character vector, \code{\link[=extract_doc_df]{extract_doc_df()}} returns a data frame list.}
 
 \item{parent_node}{A XML document, node, or node set.}
 
-\item{node_names}{Node names to iterate over. Default `NULL`. Typically
+\item{node_names}{Node names to iterate over. Default \code{NULL}. Typically
 created from children of parent node.}
 
-\item{unique_nm}{If `TRUE`, ensure that parent_node names are unique before
-using them to extract data from the `xml_document`. Ignored if `node_names`
+\item{unique_nm}{If \code{TRUE}, ensure that parent_node names are unique before
+using them to extract data from the \code{xml_document}. Ignored if \code{node_names}
 is supplied.}
 
-\item{nested}{If `TRUE`, use `parent_nm` to extract a parent node from doc.
-If `FALSE`, `parent_node` defaults to doc (unless `parent_node` is supplied).}
+\item{nested}{If \code{TRUE}, use \code{parent_nm} to extract a parent node from doc.
+If \code{FALSE}, \code{parent_node} defaults to doc (unless \code{parent_node} is supplied).}
 
 \item{type}{Type of data to extract from chlildren nodes: "attr" (attributes)
 or "text".}

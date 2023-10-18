@@ -15,7 +15,7 @@ has_xml_ext <- function(string, ignore.case = TRUE) {
 #' MIMETYPE file only).
 #'
 #' @param file Path to a file ending in a `.idml` file extension.
-#' @param exdir Directory to extract files to when using [base::unzip()],
+#' @param exdir Directory to extract files to when using [utils::unzip()],
 #'   Default: `tempdir()`.
 #' @param ... Additional parameters passed to [xml2::read_xml()]
 #' @returns A `idml` class object.

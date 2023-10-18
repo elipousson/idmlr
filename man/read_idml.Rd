@@ -2,27 +2,27 @@
 % Please edit documentation in R/read_idml.R
 \name{read_idml}
 \alias{read_idml}
-\title{Read an InDesign Markup Language (IDML) file to a `idml` object}
+\title{Read an InDesign Markup Language (IDML) file to a \code{idml} object}
 \usage{
 read_idml(file, ..., exdir = tempdir())
 }
 \arguments{
-\item{file}{Path to a file ending in a `.idml` file extension.}
+\item{file}{Path to a file ending in a \code{.idml} file extension.}
 
-\item{...}{Additional parameters passed to [xml2::read_xml()]}
+\item{...}{Additional parameters passed to \code{\link[xml2:read_xml]{xml2::read_xml()}}}
 
-\item{exdir}{Directory to extract files to when using [base::unzip()],
-Default: `tempdir()`.}
+\item{exdir}{Directory to extract files to when using \code{\link[utils:unzip]{utils::unzip()}},
+Default: \code{tempdir()}.}
 }
 \value{
-A `idml` class object.
+A \code{idml} class object.
 }
 \description{
-[read_idml()] takes a file path for an `idml` file and returns an `idml`
+\code{\link[=read_idml]{read_idml()}} takes a file path for an \code{idml} file and returns an \code{idml}
 object: a list containing a file name, file path, and the contents of the
-file as a list of `xml_document` objects and character vectors (for the
+file as a list of \code{xml_document} objects and character vectors (for the
 MIMETYPE file only).
 }
 \seealso{
-[xml2::read_xml()]
+\code{\link[xml2:read_xml]{xml2::read_xml()}}
 }
