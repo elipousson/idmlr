@@ -18,24 +18,15 @@ get_idml_spreads <- function(idml,
                              format = "list",
                              names_to = "Spread",
                              ...,
-                             .error_call = caller_env()) {
-  spreads <- get_idml_contents(
+                             error_call = caller_env()) {
+  get_idml_contents(
     idml,
-    dir = "Spreads"
+    format = format,
+    dir = "Spreads",
+    parent_nm = "Spread",
+    names_to = "Spread",
+    allow_list = TRUE,
+    ...,
+    error_call = error_call
   )
-
-  if (format == "list") {
-    return(spreads)
-  }
-
-  if (format == "data.frame") {
-    spread_list <- lapply(
-      spreads,
-      function(x) {
-        xml_doc_to_df(x, parent_nm = "Spread")
-      }
-    )
-
-    purrr::list_rbind(spread_list, ..., names_to = "Spread")
-  }
 }

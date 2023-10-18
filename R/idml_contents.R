@@ -40,10 +40,10 @@ get_idml_contents <- function(idml,
 
   if (!is.null(dir) && !is.null(file)) {
     content <- contents[[dir]][[file]]
-  } else if (!is.null(file)) {
+  } else if (!is.null(file) && is.null(dir)) {
     content <- contents[[file]]
   } else {
-    return(contents[[dir]])
+    content <- contents[[dir]]
   }
 
   format_idml_content(
@@ -69,6 +69,8 @@ format_idml_content <- function(content,
                                 parent_nm = NULL,
                                 unique_nm = TRUE,
                                 type = "attr",
+                                names_to = zap(),
+                                allow_list = TRUE,
                                 ...,
                                 error_call = caller_env()) {
   format <- tolower(format)
@@ -78,6 +80,23 @@ format_idml_content <- function(content,
     c("list", "xml_document", "data.frame"),
     error_call = error_call
   )
+
+  if (allow_list && is_bare_list(content) && (format == "data.frame")) {
+    content <- lapply(
+      content,
+      function(x) {
+        xml_doc_to_df(
+          doc = x,
+          parent_nm = parent_nm,
+          unique_nm = unique_nm,
+          type = type,
+          ...
+          )
+      }
+    )
+
+    return(purrr::list_rbind(content, names_to = names_to))
+  }
 
   switch(format,
     "xml_document" = content,

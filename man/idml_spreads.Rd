@@ -10,7 +10,7 @@ get_idml_spreads(
   format = "list",
   names_to = "Spread",
   ...,
-  .error_call = caller_env()
+  error_call = caller_env()
 )
 }
 \arguments{
@@ -41,13 +41,9 @@ using them to extract data from the `xml_document`. Ignored if `node_names`
 is supplied.}
     \item{\code{type}}{Type of data to extract from chlildren nodes: "attr" (attributes)
 or "text".}
-    \item{\code{error_call}}{The execution environment of a currently
-running function, e.g. \code{caller_env()}. The function will be
-mentioned in error messages as the source of the error. See the
-\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
   }}
 
-\item{.error_call}{The execution environment of a currently
+\item{error_call}{The execution environment of a currently
 running function, e.g. \code{caller_env()}. The function will be
 mentioned in error messages as the source of the error. See the
 \code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}

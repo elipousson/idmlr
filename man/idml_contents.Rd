@@ -26,6 +26,8 @@ format_idml_content(
   parent_nm = NULL,
   unique_nm = TRUE,
   type = "attr",
+  names_to = zap(),
+  allow_list = TRUE,
   ...,
   error_call = caller_env()
 )
