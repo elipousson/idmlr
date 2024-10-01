@@ -6,7 +6,7 @@
 \alias{validate_idml}
 \title{S3 object functions for idml class objects}
 \usage{
-new_idml(file, path, contents)
+new_idml(file, path, contents, error_call = caller_env())
 
 validate_idml(
   idml,
@@ -25,19 +25,21 @@ where the XML files are located.}
 
 \item{contents}{A named list of \code{xml_document} objects.}
 
-\item{idml}{A object to validate as an \code{idml} class object.}
+\item{error_call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
+
+\item{idml}{An \code{idml} class object.}
 
 \item{type}{MIMETYPE value to use in validating \code{idml} objects.}
 
 \item{arg}{An argument name as a string. This argument
 will be mentioned in error messages as the input that is at the
 origin of a problem.}
-
-\item{error_call}{The execution environment of a currently
-running function, e.g. \code{caller_env()}. The function will be
-mentioned in error messages as the source of the error. See the
-\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \description{
-S3 object functions for idml class objects
+\code{\link[=new_idml]{new_idml()}} creates a idml class object from a file path and contents.
+\code{\link[=validate_idml]{validate_idml()}} checks idml objects. Used by \code{\link[=read_idml]{read_idml()}} to create idml
+objects from a file and by other functions to validate input idml objects.
 }

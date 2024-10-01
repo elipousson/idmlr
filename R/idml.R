@@ -1,5 +1,9 @@
 #' S3 object functions for idml class objects
 #'
+#' [new_idml()] creates a idml class object from a file path and contents.
+#' [validate_idml()] checks idml objects. Used by [read_idml()] to create idml
+#' objects from a file and by other functions to validate input idml objects.
+#'
 #' @name idml
 NULL
 
@@ -13,7 +17,8 @@ NULL
 #' @importFrom vctrs new_vctr
 new_idml <- function(file,
                      path,
-                     contents) {
+                     contents,
+                     error_call = caller_env()) {
   idml <- vctrs::new_vctr(
     .data = list(
       file = file,
@@ -23,14 +28,14 @@ new_idml <- function(file,
     class = "idml"
   )
 
-  validate_idml(idml)
+  validate_idml(idml, error_call = error_call)
 
   idml
 }
 
 #' @rdname idml
 #' @name validate_idml
-#' @param idml A object to validate as an `idml` class object.
+#' @param idml An `idml` class object.
 #' @param type MIMETYPE value to use in validating `idml` objects.
 #' @inheritParams rlang::args_error_context
 #' @export
