@@ -2,7 +2,7 @@ pandoc: 3.1.11
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2024-10-01T16:46Z
+last_built: 2024-10-01T16:48Z
 urls:
   reference: https://elipousson.github.io/idmlr/reference
   article: https://elipousson.github.io/idmlr/articles
