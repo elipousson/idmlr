@@ -19,7 +19,13 @@ get_idml_resource(
 
 get_idml_fonts(idml, format = "xml_document", parent_nm = NULL, ...)
 
-get_idml_styles(idml, format = "xml_document", parent_nm = NULL, ...)
+get_idml_styles(
+  idml,
+  format = "xml_document",
+  type = NULL,
+  parent_nm = NULL,
+  ...
+)
 
 get_idml_graphic(idml, format = "xml_document", parent_nm = NULL, ...)
 
@@ -47,8 +53,6 @@ name. The ns is ignored when using \code{\link[xml2:xml_name<-]{xml_name<-()}} a
     \item{\code{unique_nm}}{If \code{TRUE}, ensure that parent_node names are unique before
 using them to extract data from the \code{xml_document}. Ignored if \code{node_names}
 is supplied.}
-    \item{\code{type}}{Type of data to extract from chlildren nodes: "attr" (attributes)
-or "text".}
   }}
 
 \item{error_call}{The execution environment of a currently
@@ -58,11 +62,15 @@ mentioned in error messages as the source of the error. See the
 
 \item{parent_nm}{Name of top-level parent node. If parent_nm is a
 character vector, \code{\link[=extract_doc_df]{extract_doc_df()}} returns a data frame list.}
+
+\item{type}{Type of data to extract from chlildren nodes: "attr" (attributes)
+or "text".}
 }
 \description{
 By default, if \code{format = "data.frame"}, \code{\link[=get_idml_fonts]{get_idml_fonts()}} returns a single
 data.frame and \code{\link[=get_idml_styles]{get_idml_styles()}}, \code{\link[=get_idml_graphic]{get_idml_graphic()}}, and
 \code{\link[=get_idml_preferences]{get_idml_preferences()}} returns a list of data.frame objects values present
 in the input \code{idml} object. This format option is still under development and
-does not return all available data from the \code{xml_document}.
+does not return all available data from the \code{xml_document}. Note, for the
+\code{\link[=get_idml_styles]{get_idml_styles()}}, the \code{parent_nm} argument is ignored and may be removed.
 }

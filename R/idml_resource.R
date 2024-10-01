@@ -12,7 +12,8 @@ NULL
 #' data.frame and [get_idml_styles()], [get_idml_graphic()], and
 #' [get_idml_preferences()] returns a list of data.frame objects values present
 #' in the input `idml` object. This format option is still under development and
-#' does not return all available data from the `xml_document`.
+#' does not return all available data from the `xml_document`. Note, for the
+#' [get_idml_styles()], the `parent_nm` argument is ignored and may be removed.
 #'
 #' @name get_idml_resource
 #' @inheritParams check_idml
@@ -62,22 +63,38 @@ get_idml_fonts <- function(idml,
 #' @export
 get_idml_styles <- function(idml,
                             format = "xml_document",
+                            type = NULL,
                             parent_nm = NULL,
                             ...) {
-  parent_nm <- parent_nm %||%
-    c(
-      "RootCharacterStyleGroup", "RootParagraphStyleGroup", "TOCStyle",
-      "RootCellStyleGroup", "RootTableStyleGroup", "RootObjectStyleGroup",
-      "TrapPreset"
-    )
+  # TODO: Remove the parent_nm argument if it is not used.
+  # parent_nm <- parent_nm %||%
+  #   c(
+  #     "RootCharacterStyleGroup", "RootParagraphStyleGroup", "TOCStyle",
+  #     "RootCellStyleGroup", "RootTableStyleGroup", "RootObjectStyleGroup",
+  #     "TrapPreset"
+  #   )
 
-  get_idml_resource(
+  styles <- get_idml_resource(
     idml,
     "Styles.xml",
     format = format,
-    parent_nm = parent_nm,
     ...
   )
+
+  if (is.null(type)) {
+    return(styles)
+  }
+
+  child_nm <- switch(type,
+    "character" = "RootCharacterStyleGroup",
+    "paragraph" = "RootParagraphStyleGroup",
+    "toc" = "TOCStyle",
+    "cell" = "RootCellStyleGroup",
+    "table" = "RootTableStyleGroup",
+    "object" = "RootObjectStyleGroup"
+  )
+
+  xml2::xml_child(styles, child_nm)
 }
 
 #' @name get_idml_graphic
@@ -113,4 +130,76 @@ get_idml_preferences <- function(idml, format = "xml_document", parent_nm = NULL
     )
 
   get_idml_resource(idml, "Preferences.xml", format = format, parent_nm = parent_nm, ...)
+}
+
+#' List styles from an idml object
+#'
+#' [idml_list_styles()] takes an idml object and returns a bare list with names,
+#' properties, attributes, and content from the XML nodes definition the
+#' paragraph, character, or other styles of the specified type.
+#'
+#' @inheritParams get_idml_styles
+#' @param format Output format must be "list"
+#' @inheritDotParams get_idml_styles
+#' @examples
+#' \dontrun{
+#' if(interactive()){
+#'   path <- system.file("idml/letter_portrait_standard.idml", package = "idmlr")
+#'
+#'   idml_obj <- read_idml(path)
+#'
+#'   idml_list_styles(idml_obj)
+#'  }
+#' }
+#' @returns A bare list with four elements: a named list of style attributes
+#'   (names are style names), properties for the style XML nodes, attributes for
+#'   the style XML nodes, and the contents of each XML node.
+#' @export
+#' @importFrom xml2 xml_children xml_attrs xml_child xml_contents
+idml_list_styles <- function(...,
+                             type = "paragraph",
+                             format = "list") {
+  stopifnot(format == "list")
+  styles <- get_idml_styles(..., format = "xml_document", type = type)
+
+  child_styles <- styles |>
+    # get paragraph styles
+    xml_children()
+
+  child_styles_attr <- child_styles |>
+    xml_attrs()
+
+  child_styles_props <- child_styles |>
+    xml_children()
+
+  child_styles_props_attr <- child_styles_props |>
+    seq_along() |>
+    map(
+      \(i) {
+        child_styles_props |>
+          xml_child(i) |>
+          xml_attrs()
+      }
+    )
+
+  child_styles_props_children <- child_styles_props |>
+    seq_along() |>
+    map(
+      \(i) {
+        child_styles_props |>
+          xml_child(i) |>
+          xml_contents()
+      }
+    )
+
+
+  list(
+    set_names(
+      child_styles_attr,
+      map(child_styles_attr, "Name")
+    ),
+    child_styles_props,
+    child_styles_props_attr,
+    child_styles_props_children
+  )
 }
