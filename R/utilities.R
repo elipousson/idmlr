@@ -11,3 +11,8 @@ is_url <- function(x) {
     x
   )
 }
+
+#' Is the object a list of XML document objects?
+is_list_of_xml_documents <- function(x) {
+  all(purrr::map_lgl(x, inherits_any, "xml_document"))
+}
