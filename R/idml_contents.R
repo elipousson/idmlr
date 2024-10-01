@@ -92,7 +92,7 @@ format_idml_content <- function(content,
           unique_nm = unique_nm,
           type = type,
           ...
-          )
+        )
       }
     )
 
