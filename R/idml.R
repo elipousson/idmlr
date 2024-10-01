@@ -32,12 +32,24 @@ new_idml <- function(file,
 #' @name validate_idml
 #' @param idml A object to validate as an `idml` class object.
 #' @param type MIMETYPE value to use in validating `idml` objects.
+#' @inheritParams rlang::args_error_context
 #' @export
 validate_idml <- function(idml,
                           what = "idml",
                           nm = c("file", "path", "contents"),
                           type = "application/vnd.adobe.indesign-idml-package",
+                          arg = caller_arg(idml),
                           error_call = caller_env()) {
+  if (is_string(idml) && file.exists(idml)) {
+    cli_abort(
+      c(
+        "{.arg {arg}} must be an {.cls {what}} object, not a file path.",
+        "i" = "Use {.fn read_idml} to create an {.cls idml} object from a file."
+      ),
+      call = error_call
+    )
+  }
+
   rules <- c(
     inherits(idml, what),
     all(has_name(idml, nm)),
@@ -57,7 +69,7 @@ validate_idml <- function(idml,
   )
 
   msg <- paste0(
-    "{.arg idml} ", paste0(msgs[!rules], collapse = ", "),
+    "{.arg {arg}} ", paste0(msgs[!rules], collapse = ", "),
     "."
   )
 

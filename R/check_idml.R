@@ -17,7 +17,7 @@ check_idml_resource <- function(idml,
                                 resource = NULL,
                                 arg = caller_arg(idml),
                                 call = caller_env()) {
-  validate_idml(idml)
+  validate_idml(idml, error_call = call)
 
   resources <- idml[["contents"]][["Resources"]]
 

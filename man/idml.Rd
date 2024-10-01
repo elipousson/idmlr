@@ -13,6 +13,7 @@ validate_idml(
   what = "idml",
   nm = c("file", "path", "contents"),
   type = "application/vnd.adobe.indesign-idml-package",
+  arg = caller_arg(idml),
   error_call = caller_env()
 )
 }
@@ -27,6 +28,15 @@ where the XML files are located.}
 \item{idml}{A object to validate as an \code{idml} class object.}
 
 \item{type}{MIMETYPE value to use in validating \code{idml} objects.}
+
+\item{arg}{An argument name as a string. This argument
+will be mentioned in error messages as the input that is at the
+origin of a problem.}
+
+\item{error_call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \description{
 S3 object functions for idml class objects
