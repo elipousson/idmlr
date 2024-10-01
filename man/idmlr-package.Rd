@@ -11,7 +11,9 @@ Read InDesign Markup Language (IDML) Files into R. Additional functions to modif
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://github.com/elipousson/idmlr}
   \item \url{https://elipousson.github.io/idmlr/}
+  \item Report bugs at \url{https://github.com/elipousson/idmlr/issues}
 }
 
 }
